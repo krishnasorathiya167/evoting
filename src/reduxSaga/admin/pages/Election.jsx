@@ -14,11 +14,20 @@ const Election = () => {
   let addData = () => {
     let data = {
       election_name: election_name.current.value,
-      date: date.current.value,
+      date: date.current.value
     }
     console.log(data);
     dispatch({ type: POST_ELECTION_PENDING, payload: data })
   }
+
+  // let addData = () => {
+  //   let data = {
+  //     election_name: election_name.current.value,
+  //     date: date.current.value,
+  //   }
+  //   console.log(data);
+  //   dispatch({ type: POST_ELECTION_PENDING, payload: data })
+  // }
 
   let removeData = (election) => {
     console.log(election);
@@ -76,6 +85,7 @@ const Election = () => {
               return (
                 <React.Fragment>
                   <tr>
+
                     <td>{val.election_name}</td>
                     <td>{val.date}</td>
                     <td><button className='removebtn' onClick={() => removeData(val._id)}><i class="fa-solid fa-trash"></i></button></td>

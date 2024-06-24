@@ -67,7 +67,7 @@ const Voter = () => {
                       <input type="text" class="form-control" name="fatherName" ref={fatherName} />
                       <label class="col-form-label">Sex:</label>
                       <input type="text" class="form-control" name="sex" ref={sex} />
-                      <label class="col-form-label">DOB:</label>
+                      <label class="col-form-label">dob:</label>
                       <input type="date" class="form-control" name="dob" ref={dob} />
                     </div>
                   </div>
@@ -99,10 +99,10 @@ const Voter = () => {
             <th scope="col">Card No.</th>
             <th scope="col">Name</th>
             <th scope="col">Father Name</th>
-            <th scope="col">Sex</th>
-            <th scope="col">DOB</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Date Of Birth</th>
             <th scope="col">Address</th>
-            <th scope="col">Assebmly NoandName</th>
+            <th scope="col">Assebmly Name</th>
             <th scope="col">Part NoandName</th>
             <th scope="col">Password</th>
             <th scope="col">Delete</th>
