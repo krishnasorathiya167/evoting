@@ -4,13 +4,13 @@ import { DELETE_CONNECTION_PENDING, DELETE_CONNECTION_SUCCESS, POST_CONNECTION_P
 
 const Partyconnection = () => {
 
-  const party = useRef();
-  const election = useRef();
+  let party = useRef();
+  let election = useRef();
   let dispatch = useDispatch();
 
   //add collection
   const addcolletion = () => {
-    const data = {
+    let data = {
       election: election.current.value,
       party: party.current.value,
     };
@@ -43,13 +43,13 @@ const Partyconnection = () => {
             </thead>
             <tbody>
               {
-                connection.connection?.map((val, ind) => {
+                connection?.connection?.map((val, ind) => {
                   return (
                     <React.Fragment key={ind}>
                       <tr>
-                        <td><img src={val?.party.party_logo} alt="logo image" /></td>
-                        <td>{val?.party.party_name}</td>
-                        <td>{val?.election.election_name}</td>
+                        <td><img src={val.party?.party_logo} alt="" /></td>
+                        <td>{val.party?.party_name}</td>
+                        <td>{val.election?.election_name}</td>
                         <td><button className='removebtn' onClick={() => removeData(val._id)}><i class="fa-solid fa-trash"></i></button></td>
                       </tr>
                     </React.Fragment>
@@ -68,14 +68,14 @@ const Partyconnection = () => {
                 <div className="form-body mt-3">
                   <label className='d-block'>Select Election Name:
                     <select className="form-select mt-2 mb-3" ref={election} >
-                      {connection.election?.map((val, index) => (
+                      {connection?.election?.map((val, index) => (
                         <option key={index} value={val._id}>{val.election_name}</option>
                       ))}
                     </select>
                   </label>
                   <label className='d-block'>Select Party Name:
                     <select className="form-select mt-2 mb-3" ref={party} >
-                      {connection.party?.map((val, index) => (
+                      {connection?.party?.map((val, index) => (
                         <option key={index} value={val._id}>{val.party_name}</option>
                       ))}
                     </select>

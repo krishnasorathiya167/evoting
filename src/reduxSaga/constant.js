@@ -18,4 +18,8 @@ export let DELETE_CONNECTION = "partylist/delete/";
 
 export let ADD_ADMIN = "login/admin";
 
-export let ADD_USER="login/user"
+export let ADD_USER = "login/user"
+
+export let GET_VOTE = "vote/list";
+export let POST_VOTE = "vote/create";
+export let DELETE_VOTE = "vote/delete/";

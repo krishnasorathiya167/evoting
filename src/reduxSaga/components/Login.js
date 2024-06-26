@@ -21,7 +21,7 @@ const Login = () => {
     let result = res.data.data;
     console.log(result);
     localStorage.setItem("admin", JSON.stringify(result))
-    localStorage.setItem("logedin",JSON.stringify(true))
+    localStorage.setItem("logedin",true)
     navigate("/")
   }
   let userData=()=>{
@@ -43,7 +43,7 @@ const Login = () => {
             <div className="data">
               <div className="info">
                 <div className="login-data">
-                  <h2>Login</h2>
+                  <h2>Admin Login</h2>
                   <label className='d-block'>User Name:
                     <input type="text" className='form-control' name='name' ref={name} placeholder='Enter Name' /></label>
                   <label className='d-block'>Password:

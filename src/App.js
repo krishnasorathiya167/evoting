@@ -13,17 +13,21 @@ import { GET_CONNECTION_PENDING, GET_ELECTION_PENDING, GET_PARTY_PENDING, GET_VO
 import Login from './reduxSaga/components/Login';
 import Userlogin from './reduxSaga/components/Userlogin';
 import User from './reduxSaga/user/User';
+import { GET_VOTE_PENDING } from './reduxSaga/user/action';
+import Privateroute from './reduxSaga/services/Privateroute';
 
 const App = () => {
 
   let dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: GET_PARTY_PENDING });
-    dispatch({ type: GET_VOTER_PENDING });
-    dispatch({ type: GET_ELECTION_PENDING });
+    // dispatch({ type: GET_PARTY_PENDING });
+    // dispatch({ type: GET_VOTER_PENDING });
+    // dispatch({ type: GET_ELECTION_PENDING });
     dispatch({ type: GET_CONNECTION_PENDING });
+    dispatch({type:GET_VOTE_PENDING})
   }, []);
   let admin = JSON.parse(localStorage.getItem("admin"))
+  let user = JSON.parse(localStorage.getItem("user"))
   console.log(admin.role);
 
 
@@ -46,9 +50,16 @@ let Home = () => {
     localStorage.removeItem("logedin")
     navigate("/login")
   }
+  let dispatch = useDispatch();
+  dispatch({ type: GET_PARTY_PENDING });
+    dispatch({ type: GET_VOTER_PENDING });
+    dispatch({ type: GET_ELECTION_PENDING });
+    dispatch({ type: GET_CONNECTION_PENDING });
+    dispatch({type:GET_VOTE_PENDING})
   let admin = JSON.parse(localStorage.getItem("admin"))
   return (
     <>
+    <Privateroute/>
       <Navbar name={admin.name} password={admin.password} role={admin.role} />
 
       <div className="adminbar">
@@ -60,7 +71,6 @@ let Home = () => {
               </div>
             </div>
             <div className="col-lg-9 col-md-8 col-sm-6 p-0">
-              {/* <button className='btn' onClick={logout} >log out</button> */}
               <Routes>
                 <Route path='/' element={<Dashboard />} />
                 <Route path='/party' element={<Party />} />
@@ -76,49 +86,7 @@ let Home = () => {
   )
 }
 
-// if (role == "admin") {
 
-//   return (
-//     <>
-//       <Navbar element={role} />
-//       <div className="adminbar">
-//         <div className="container">
-//           <div className="row">
-//             <div className="col-lg-3 col-md-4 col-sm-6">
-//               <div className="siderbar">
-//                 <Sider />
-//               </div>
-//             </div>
-//             <div className="col-lg-9 col-md-8 col-sm-6 p-0">
-//               <Routes>
-//                 <Route path='/' element={<Dashboard />} />
-//                 <Route path='/party' element={<Party />} />
-//                 <Route path='/voter' element={<Voter />} />
-//                 <Route path='/election' element={<Election />} />
-//                 <Route path='/partyconnection' element={<Partyconnection />} />
-//               </Routes>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
-// else if (role === "user") {
-//   return (
-//     <>
-//       <Navbar />
-//     </>
-//   )
-// }
-
-
-// return (
-//   <div>
-//     <Navbar/>
-//     <Sider/>
-//   </div>
-// )
 
 
 export default App

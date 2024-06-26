@@ -37,7 +37,7 @@ let adminReducer = (state = initialState, action) => {
                 party: state.party.concat(action.payload.data),
                 alert:Swal.fire({
                     title: "Sucess!",
-                    text: "Your Data is Successfully Added!",
+                    text: "Party is Successfully Added!",
                     icon: "success"
                   })
             }
@@ -46,7 +46,12 @@ let adminReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                party: state.party.filter((val) => val._id != action.payload)
+                party: state.party.filter((val) => val._id != action.payload),
+                alert:Swal.fire({
+                    title: "Delete!",
+                    text: "Party is Successfully Deleted!",
+                    icon: "success"
+                  })
             }
         }
 
@@ -63,14 +68,24 @@ let adminReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                voter: state.voter.concat(action.payload)
+                voter: state.voter.concat(action.payload),
+                alert:Swal.fire({
+                    title: "Sucess!",
+                    text: "VOter is Successfully Added!",
+                    icon: "success"
+                  })
             }
         }
         case DELETE_VOTER_SUCCESS: {
             return {
                 ...state,
                 isLoading: false,
-                voter: state.voter.filter((val) => val._id != action.payload)
+                voter: state.voter.filter((val) => val._id != action.payload),
+                alert:Swal.fire({
+                    title: "Sucess!",
+                    text: "Voter is Successfully deleted!",
+                    icon: "success"
+                  })
             }
         }
 
@@ -88,13 +103,23 @@ let adminReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 election: state.election.concat(action.payload),
+                alert:Swal.fire({
+                    title: "Sucess!",
+                    text: "Election is Successfully Added!",
+                    icon: "success"
+                  })
             }
         }
         case DELETE_ELECTION_SUCCESS: {
             return {
                 ...state,
                 isLoading: false,
-                election: state.election.filter((val) => val._id != action.payload)
+                election: state.election.filter((val) => val._id != action.payload),
+                alert:Swal.fire({
+                    title: "Sucess!",
+                    text: "Election is Successfully deleted!",
+                    icon: "success"
+                  })
             }
         }
 
@@ -111,14 +136,24 @@ let adminReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                connection: state.connection.concat(action.payload)
+                connection: state.connection.concat(action.payload),
+                alert:Swal.fire({
+                    title: "Sucess!",
+                    text: "Connection is Successfully Added!",
+                    icon: "success"
+                  })
             }
         }
         case DELETE_CONNECTION_SUCCESS: {
             return {
                 ...state,
                 isLoading: false,
-                connection: state.connection.filter((val) => val._id != action.payload)
+                connection: state.connection.filter((val) => val._id != action.payload),
+                alert:Swal.fire({
+                    title: "Sucess!",
+                    text: "Connection is Successfully deleted!",
+                    icon: "success"
+                  })
             }
         }
         case (GET_PARTY_ERROR, POST_PARTY_ERROR, DELETE_PARTY_ERROR, GET_VOTER_ERROR, POST_VOTER_ERROR, DELETE_VOTER_ERROR, GET_ELECTION_ERROR, DELETE_ELECTION_ERROR, GET_CONNECTION_ERROR, POST_CONNECTION_ERROR, DELETE_CONNECTION_ERROR): {

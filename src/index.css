@@ -194,6 +194,7 @@ table th {
   width: 250px;
   background-color: var(--white);
   text-align: center;
+  z-index: 1;
 }
 
 .profile .profile-name ul li a {
@@ -235,4 +236,35 @@ table th {
   margin: 5px 0;
   background-color: transparent;
   border: none;
+}
+.user-table thead th{
+  padding: 15px 0;
+  font-size: 17px;
+}
+
+.userdata .container{
+  max-width: 900px;
+  margin: 0 auto;
+}
+.submit-btn button{
+  font-size: 16px;
+  background-color: var(--primary);
+  padding: 10px 20px; 
+  border: none;
+  color: var(--white);
+  border-radius: 10px;
+}
+.card-user .card{
+  border-radius: 10px;
+}
+.card-user .card h2{
+  background-color: var(--primary);
+  padding: 10px 0;
+  color: var(--white);
+  font-size: 18px;
+border-radius: 10px 10px 0 0;
+}
+.card-user .card h3{
+  font-size: 20px;
+  padding: 10px 0;
 }

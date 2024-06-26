@@ -3,28 +3,41 @@ import logo2 from "../images/logo2.png"
 import axios from 'axios';
 import { ADD_USER, BASE_URL } from '../constant';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Userlogin = () => {
 
     let cardNo = useRef();
     let password = useRef();
-    let navigate=useNavigate();
+    let navigate = useNavigate();
 
     let loginData = async () => {
+        if (localStorage.getItem("logedin")) {
+            alert("You Are Already Voting...");
+            return;
+        }
         let data = {
             cardNo: cardNo.current.value,
             password: password.current.value,
         }
         console.log(data);
-        let res = await axios.post(BASE_URL + ADD_USER, data)
-        let result = res.data.data;
-        localStorage.setItem("user", JSON.stringify(result))
-        navigate("/user")
-    }
 
-    let adminData=()=>{
-        
-            navigate("/login")
+        try {
+            let res = await axios.post(BASE_URL + ADD_USER, data)
+            let result = res.data.data;
+            localStorage.setItem("user", JSON.stringify(result))
+            localStorage.setItem("logedin", true)
+            navigate("/user")
+        } catch (error) {
+            Swal.fire({
+                title: "not Found ?",
+                text: "Voter Not Found?",
+                icon: "question"
+            });
+        }
+    }
+    let adminData = () => {
+        navigate("/login")
     }
     return (
         <div>
@@ -41,7 +54,7 @@ const Userlogin = () => {
                         <div className="data">
                             <div className="info">
                                 <div className="login-data">
-                                    <h2>Login</h2>
+                                    <h2>User Login</h2>
                                     <label className='d-block'>User Name:
                                         <input type="text" className='form-control' name='cardNo' ref={cardNo} placeholder='Enter Name' /></label>
                                     <label className='d-block'>Password:
